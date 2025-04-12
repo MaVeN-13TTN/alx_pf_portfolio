@@ -2,70 +2,27 @@ import React from 'react';
 
 export default function Bio() {
   return (
-    <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-        About Me
+    <div className="max-w-3xl mx-auto px-4 py-8">
+      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-heading text-center">
+        My Story
       </h1>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">
-          Professional Summary
-        </h2>
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
-          I am a passionate Full Stack Developer with expertise in building modern web applications.
-          My journey in software development has equipped me with a strong foundation in both frontend
-          and backend technologies, allowing me to create seamless user experiences while implementing
-          robust server-side solutions.
+      <div className="space-y-6 text-body text-lg">
+        <p>
+          Hi there! I&apos;m Ndung&apos;u Kinyanjui — a tech enthusiast, lifelong learner, and problem-solver currently pursuing a Bachelor of Applied Science in Computer Science at Daystar University.
         </p>
-        <p className="text-gray-700 dark:text-gray-300">
-          I enjoy tackling complex problems and continuously learning new technologies to stay at the
-          forefront of the ever-evolving tech landscape.
+        <p>
+          My professional journey is rooted in curiosity and driven by impact. I began by building simple websites, then dove into full-stack development. Over time, my passion evolved into a deeper calling — securing cloud infrastructures, architecting solutions, and empowering others to do the same.
         </p>
-      </div>
-
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">
-          Skills
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <h3 className="text-lg font-medium mb-2 text-gray-800 dark:text-white">Frontend</h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
-              <li>React.js</li>
-              <li>Next.js</li>
-              <li>TypeScript</li>
-              <li>Tailwind CSS</li>
-              <li>HTML/CSS</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-medium mb-2 text-gray-800 dark:text-white">Backend</h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>MongoDB</li>
-              <li>SQL Databases</li>
-              <li>RESTful APIs</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">
-          Education & Certifications
-        </h2>
-        <div className="mb-4">
-          <h3 className="text-lg font-medium text-gray-800 dark:text-white">Bachelor&apos;s Degree in Computer Science</h3>
-          <p className="text-gray-600 dark:text-gray-400">University Name, 2018-2022</p>
-        </div>
-        <div>
-          <h3 className="text-lg font-medium text-gray-800 dark:text-white">Certifications</h3>
-          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
-            <li>Full Stack Web Development</li>
-            <li>AWS Certified Developer</li>
-          </ul>
-        </div>
+        <p>
+          🌐 Today, I hold certifications as an AWS Solutions Architect Associate and Cloud Practitioner, and serve as the GDG Cybersecurity Lead at Daystar. I organize cybersecurity events, lead workshops, and champion the integration of cloud technologies and security principles into everything I do.
+        </p>
+        <p>
+          💡 At my core, I’m someone who believes in creating technology that empowers, protects, and scales. I thrive at the intersection of DevOps, cloud computing, and cybersecurity — and I’m always up for a challenge that makes a difference.
+        </p>
+        <p className="font-semibold text-accent mt-8 text-center">
+          Let’s connect. Let’s innovate. Let’s secure the future.
+        </p>
       </div>
     </div>
   );

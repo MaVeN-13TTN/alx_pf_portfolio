@@ -2,43 +2,27 @@ import React from 'react';
 
 export default function ElevatorPitch() {
   return (
-    <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-heading">
-        My Elevator Pitch
+    <div className="max-w-3xl mx-auto px-4 py-8">
+      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-heading text-center">
+        🎙️ Elevator Pitch (Video Coming Soon!)
       </h1>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-heading">
-          Video Coming Soon
-        </h2>
-        <div className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-6">
-          <p className="text-secondary text-lg">
-            Elevator pitch video will be added here
-          </p>
-        </div>
-        <p className="text-secondary mb-4">
-          Hello! I&apos;m a Full Stack Developer with expertise in building modern web applications using
-          technologies like React, Next.js, Node.js, and various databases. I specialize in creating
-          responsive, user-friendly interfaces and robust backend systems.
+      <div className="space-y-6 text-body text-lg">
+        <p className="font-semibold">
+          What drives me? Building secure systems that empower people and scale businesses.
         </p>
-        <p className="text-secondary">
-          With a strong foundation in both frontend and backend development, I can take projects from
-          concept to completion. I&apos;m passionate about writing clean, maintainable code and staying
-          up-to-date with the latest industry trends and best practices.
+        <p>
+          Hi! I&apos;m Ndung&apos;u Kinyanjui — a cloud engineer and cybersecurity advocate passionate about designing infrastructure that&apos;s built to last. I love solving complex problems, mentoring future technologists, and leading by doing.
         </p>
-      </div>
-
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-heading">
-          Why Work With Me?
-        </h2>
-        <ul className="list-disc list-inside text-secondary space-y-2">
-          <li>Strong problem-solving skills and attention to detail</li>
-          <li>Experience with modern development workflows and tools</li>
-          <li>Excellent communication and collaboration abilities</li>
-          <li>Committed to delivering high-quality, well-tested code</li>
-          <li>Passionate about continuous learning and improvement</li>
-        </ul>
+        <p>
+          Soon, you&apos;ll be able to watch my 60-second elevator pitch right here. Until then, here&apos;s the essence of it:
+        </p>
+        <blockquote className="border-l-4 border-accent pl-4 italic text-secondary my-6">
+          &ldquo;I build with purpose. I secure with precision. I scale with confidence. I&apos;m ready for the challenge — are you?&rdquo;
+        </blockquote>
+        <p className="text-center font-medium text-accent">
+          Stay tuned for the video!
+        </p>
       </div>
     </div>
   );
