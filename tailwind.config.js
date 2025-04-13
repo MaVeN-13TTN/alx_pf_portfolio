@@ -11,21 +11,73 @@ module.exports = {
       fontFamily: {
         primary: ["var(--font-inter)", "Inter", "sans-serif"],
         secondary: ["var(--font-merriweather)", "Merriweather", "serif"],
-        sans: ["var(--font-inter)", "Inter", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "sans-serif"], // Keep sans/serif for defaults
         serif: ["var(--font-merriweather)", "Merriweather", "serif"],
       },
       colors: {
-        // Light theme colors
+        // Map CSS variables to Tailwind classes
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        border: "var(--border-color)", // Added
+        card: {
+          // Added for card components
+          DEFAULT: "var(--card-background)",
+          foreground: "var(--foreground)", // Text color inside cards
+        },
         heading: "var(--heading-color)",
         body: "var(--text-color)",
         secondary: "var(--text-secondary)",
         muted: "var(--text-muted)",
-        accent: "var(--accent-color)",
-        "accent-hover": "var(--accent-hover)",
+        accent: {
+          DEFAULT: "var(--accent-color)",
+          hover: "var(--accent-hover)",
+          foreground: "var(--background)", // Text color on accent background
+        },
         success: "var(--success-color)",
         warning: "var(--warning-color)",
         error: "var(--error-color)",
       },
+      fontSize: {
+        h1: "var(--h1-size)",
+        h2: "var(--h2-size)",
+        h3: "var(--h3-size)",
+        h4: "var(--h4-size)",
+        h5: "var(--h5-size)",
+        h6: "var(--h6-size)",
+        body: "var(--body-size)",
+        small: "var(--small-size)",
+      },
+      fontWeight: {
+        normal: "var(--font-weight-normal)",
+        medium: "var(--font-weight-medium)",
+        semibold: "var(--font-weight-semibold)",
+        bold: "var(--font-weight-bold)",
+      },
+      letterSpacing: {
+        tight: "var(--letter-spacing-tight)",
+        normal: "var(--letter-spacing-normal)",
+        wide: "var(--letter-spacing-wide)",
+      },
+      lineHeight: {
+        tight: "var(--line-height-tight)",
+        normal: "var(--line-height-normal)",
+        loose: "var(--line-height-loose)",
+      },
+      animation: {
+        "bounce-slow": "bounce 2s infinite",
+        "fade-in": "fadeIn 0.6s ease-in-out",
+      },
+      keyframes: {
+        bounce: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(10px)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+      // Keep existing typography config if needed
       typography: {
         DEFAULT: {
           css: {

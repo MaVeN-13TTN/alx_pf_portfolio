@@ -34,8 +34,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${merriweather.variable} antialiased min-h-screen flex flex-col font-primary`}>
         <ThemeProvider>
           <Navbar />
-          {/* Added pb-16 for padding below main content */}
-          <main className="flex-grow container mx-auto px-4 py-8 pb-16">
+          <main className="flex-grow container mx-auto px-4 py-8">
             {children}
           </main>
           <Footer />
