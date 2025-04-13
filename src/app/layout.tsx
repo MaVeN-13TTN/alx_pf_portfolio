@@ -19,9 +19,9 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Personal portfolio website showcasing my skills and projects",
-  keywords: ["portfolio", "web developer", "frontend", "backend", "full stack"],
+  title: "Ndung'u Kinyanjui | Cloud Engineer & Cybersecurity Analyst",
+  description: "Professional portfolio of Ndung'u Kinyanjui, showcasing expertise in cloud engineering, cybersecurity, and DevOps solutions.",
+  keywords: ["cloud engineer", "cybersecurity analyst", "devops", "AWS", "Azure", "security", "portfolio", "Ndung'u Kinyanjui"],
 };
 
 export default function RootLayout({
@@ -34,7 +34,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${merriweather.variable} antialiased min-h-screen flex flex-col font-primary`}>
         <ThemeProvider>
           <Navbar />
-          <main className="flex-grow container mx-auto px-4 py-8">
+          <main className="flex-grow">
             {children}
           </main>
           <Footer />

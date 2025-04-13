@@ -66,6 +66,9 @@ module.exports = {
       animation: {
         "bounce-slow": "bounce 2s infinite",
         "fade-in": "fadeIn 0.6s ease-in-out",
+        "float-slow": "float 6s ease-in-out infinite",
+        "float-medium": "float 5s ease-in-out infinite 1s",
+        "float-fast": "float 4s ease-in-out infinite 0.5s",
       },
       keyframes: {
         bounce: {
@@ -75,6 +78,10 @@ module.exports = {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-15px)" },
         },
       },
       // Keep existing typography config if needed
