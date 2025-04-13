@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   title: "Ndung'u Kinyanjui | Cloud Engineer & Cybersecurity Analyst",
   description: "Professional portfolio of Ndung'u Kinyanjui, showcasing expertise in cloud engineering, cybersecurity, and DevOps solutions.",
   keywords: ["cloud engineer", "cybersecurity analyst", "devops", "AWS", "Azure", "security", "portfolio", "Ndung'u Kinyanjui"],
+  icons: {
+    icon: [
+      { url: "/cloud-acceleration-svgrepo-com.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" }
+    ],
+    apple: "/cloud-acceleration-svgrepo-com.svg",
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/cloud-acceleration-svgrepo-com.svg" type="image/svg+xml" />
+      </head>
       <body className={`${inter.variable} ${merriweather.variable} antialiased min-h-screen flex flex-col font-primary relative`}>
         <ThemeProvider>
           <DynamicBackground>

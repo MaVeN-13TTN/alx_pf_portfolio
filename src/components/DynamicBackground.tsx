@@ -13,9 +13,18 @@ import {
   Globe, Wifi, HardDrive, Code
 } from 'lucide-react';
 
+type IconSize = "lg" | "md" | "sm";
+type IconType = "fill" | "outline";
+
+interface IconConfig {
+  size: IconSize;
+  type: IconType;
+  Icon: React.ElementType;
+}
+
 // Create a dense background with many tech icons
-const generateIcons = () => {
-  const baseIcons = [
+const generateIcons = (): IconConfig[] => {
+  const baseIcons: IconConfig[] = [
     // Cloud Computing
     { size: "lg", type: "fill", Icon: Cloud },
     { size: "md", type: "outline", Icon: Database },
@@ -41,7 +50,7 @@ const generateIcons = () => {
   ];
 
   // Create a larger array by duplicating and mixing the base icons
-  const allIcons = [];
+  const allIcons: IconConfig[] = [];
 
   // Add the base icons
   allIcons.push(...baseIcons);
@@ -49,8 +58,8 @@ const generateIcons = () => {
   // Add duplicates with variations
   for (let i = 0; i < 5; i++) { // Create 5 sets of duplicates for higher density
     baseIcons.forEach(icon => {
-      const sizeVariations = ["sm", "md", "lg"] as const;
-      const typeVariations = ["fill", "outline"] as const;
+      const sizeVariations: IconSize[] = ["sm", "md", "lg"];
+      const typeVariations: IconType[] = ["fill", "outline"];
 
       // Randomize size and type for variety
       const size = sizeVariations[Math.floor(Math.random() * sizeVariations.length)];
@@ -100,7 +109,7 @@ const DynamicBackground = ({ children }: DynamicBackgroundProps) => {
     const backgroundElement = backgroundRef.current;
 
     // Subtle floating animation for icons
-    iconsRef.current.forEach((icon, index) => {
+    iconsRef.current.forEach((icon) => {
       if (!icon) return;
       const randomDelay = Math.random() * 5; // Random delay between 0-5s
       const randomDuration = 15 + Math.random() * 20; // Random duration between 15-35s
@@ -135,7 +144,7 @@ const DynamicBackground = ({ children }: DynamicBackgroundProps) => {
     return () => backgroundElement.removeEventListener('mousemove', handleMouseMove);
   }, [dimensions]);
 
-  const getIconSize = (size: "lg" | "md" | "sm") => {
+  const getIconSize = (size: IconSize) => {
     switch (size) {
       case 'lg': return 'w-12 h-12';
       case 'md': return 'w-8 h-8';
@@ -147,7 +156,7 @@ const DynamicBackground = ({ children }: DynamicBackgroundProps) => {
   // Theme-adaptive colors
   // In dark mode: use warm colors (warning, orange, amber)
   // In light mode: use cool colors (accent, blue, indigo)
-  const getIconColor = (type: "fill" | "outline", index: number) => {
+  const getIconColor = (type: IconType, index: number) => {
     // Create color variations based on index
     const darkModeColors = [
       'text-warning', 'text-orange-400', 'text-amber-400', 'text-yellow-400',
