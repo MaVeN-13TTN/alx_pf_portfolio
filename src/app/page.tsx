@@ -1,41 +1,38 @@
+"use client";
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Github, Linkedin, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import SkillsModal, { SkillCategory } from '@/components/SkillsModal';
+import { skillCategories } from '@/data/skills';
 
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState<SkillCategory | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openSkillsModal = (categoryId: string) => {
+    const category = skillCategories.find(cat => cat.id === categoryId);
+    if (category) {
+      setSelectedCategory(category);
+      setIsModalOpen(true);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
-      {/* Hero Section - Full viewport height with gradient background */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden bg-gradient-to-b from-background to-background/95">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern-light dark:bg-grid-pattern-dark"></div>
-        </div>
-        
-        {/* Floating tech icons (decorative) */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/6 animate-float-slow opacity-20 dark:opacity-30">
-            <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center">
-              <span className="text-2xl">☁️</span>
-            </div>
-          </div>
-          <div className="absolute bottom-1/3 right-1/5 animate-float-medium opacity-20 dark:opacity-30">
-            <div className="w-12 h-12 rounded-full bg-success/20 flex items-center justify-center">
-              <span className="text-xl">🔒</span>
-            </div>
-          </div>
-          <div className="absolute top-1/2 right-1/4 animate-float-fast opacity-20 dark:opacity-30">
-            <div className="w-10 h-10 rounded-full bg-warning/20 flex items-center justify-center">
-              <span className="text-lg">⚙️</span>
-            </div>
-          </div>
-        </div>
-        
+      {/* Hero Section - Full viewport height */}
+      <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+
         {/* Main content */}
         <div className="relative z-10 max-w-4xl mx-auto animate-fade-in">
           <h1 className="text-5xl md:text-6xl lg:text-7xl mb-6 text-heading font-bold tracking-tight">
             Ndung&apos;u Kinyanjui
           </h1>
-          
+
           <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 mb-8">
             <span className="px-4 py-2 rounded-full bg-accent/10 dark:bg-accent/20 text-accent font-medium text-sm md:text-base">
               Cloud Engineer
@@ -47,7 +44,7 @@ export default function Home() {
               DevOps Enthusiast
             </span>
           </div>
-          
+
           <div className="max-w-2xl mx-auto mb-10 text-body text-base md:text-lg space-y-4">
             <p className="text-xl md:text-2xl font-medium text-heading">
               Welcome to my digital space — where passion meets purpose.
@@ -56,7 +53,7 @@ export default function Home() {
               I&apos;m a tech professional focused on building secure, scalable systems that power meaningful digital experiences. My mission is to engineer solutions that make a difference, while continuously learning and leading in the cloud and cybersecurity space.
             </p>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
             <Link
               href="/portfolio"
@@ -71,35 +68,38 @@ export default function Home() {
               About Me
             </Link>
           </div>
-          
+
           <div className="flex justify-center space-x-4">
-            <a href="https://github.com/MaVeN-13TTN" target="_blank" rel="noopener noreferrer" 
+            <a href="https://github.com/MaVeN-13TTN" target="_blank" rel="noopener noreferrer"
                className="p-2 text-secondary hover:text-heading transition-colors">
-              <Github className="w-6 h-6" />
+              <FaGithub className="w-6 h-6" />
             </a>
             <a href="https://www.linkedin.com/in/ndungu-kinyanjui/" target="_blank" rel="noopener noreferrer"
                className="p-2 text-secondary hover:text-heading transition-colors">
-              <Linkedin className="w-6 h-6" />
+              <FaLinkedin className="w-6 h-6" />
             </a>
           </div>
         </div>
-        
+
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
           <ChevronDown className="w-6 h-6 text-secondary" />
         </div>
       </section>
-      
+
       {/* Skills Highlight Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-heading">
             Professional Expertise
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Cloud Engineering */}
-            <div className="bg-card p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow">
+            <div
+              className="glassmorphism p-6 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+              onClick={() => openSkillsModal('cloud')}
+            >
               <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                 <span className="text-2xl">☁️</span>
               </div>
@@ -110,10 +110,18 @@ export default function Home() {
                 <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded">Azure</span>
                 <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded">Terraform</span>
               </div>
+              <div className="mt-4 flex items-center justify-center">
+                <button className="px-4 py-2 bg-accent/10 hover:bg-accent/20 text-accent rounded-md text-sm font-medium transition-all duration-300 flex items-center">
+                  View Skills <ArrowRight className="ml-1 w-4 h-4" />
+                </button>
+              </div>
             </div>
-            
+
             {/* Cybersecurity */}
-            <div className="bg-card p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow">
+            <div
+              className="glassmorphism p-6 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+              onClick={() => openSkillsModal('security')}
+            >
               <div className="w-12 h-12 rounded-full bg-success/10 flex items-center justify-center mb-4">
                 <span className="text-2xl">🔒</span>
               </div>
@@ -124,10 +132,18 @@ export default function Home() {
                 <span className="px-2 py-1 bg-success/5 text-success text-xs rounded">Security Audits</span>
                 <span className="px-2 py-1 bg-success/5 text-success text-xs rounded">Compliance</span>
               </div>
+              <div className="mt-4 flex items-center justify-center">
+                <button className="px-4 py-2 bg-success/10 hover:bg-success/20 text-success rounded-md text-sm font-medium transition-all duration-300 flex items-center">
+                  View Skills <ArrowRight className="ml-1 w-4 h-4" />
+                </button>
+              </div>
             </div>
-            
+
             {/* DevOps */}
-            <div className="bg-card p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow">
+            <div
+              className="glassmorphism p-6 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+              onClick={() => openSkillsModal('devops')}
+            >
               <div className="w-12 h-12 rounded-full bg-warning/10 flex items-center justify-center mb-4">
                 <span className="text-2xl">⚙️</span>
               </div>
@@ -138,9 +154,14 @@ export default function Home() {
                 <span className="px-2 py-1 bg-warning/5 text-warning text-xs rounded">Docker</span>
                 <span className="px-2 py-1 bg-warning/5 text-warning text-xs rounded">Kubernetes</span>
               </div>
+              <div className="mt-4 flex items-center justify-center">
+                <button className="px-4 py-2 bg-warning/10 hover:bg-warning/20 text-warning rounded-md text-sm font-medium transition-all duration-300 flex items-center">
+                  View Skills <ArrowRight className="ml-1 w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
-          
+
           <div className="mt-12 text-center">
             <Link href="/portfolio" className="inline-flex items-center px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-all duration-300 font-medium">
               Explore My Projects <ArrowRight className="ml-2 w-4 h-4" />
@@ -148,6 +169,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Skills Modal */}
+      <SkillsModal
+        category={selectedCategory}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </>
   );
 }

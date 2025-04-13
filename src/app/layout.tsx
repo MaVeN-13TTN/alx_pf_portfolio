@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "../context/ThemeContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import DynamicBackground from "../components/DynamicBackground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,13 +32,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${merriweather.variable} antialiased min-h-screen flex flex-col font-primary`}>
+      <body className={`${inter.variable} ${merriweather.variable} antialiased min-h-screen flex flex-col font-primary relative`}>
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
+          <DynamicBackground>
+            <Navbar />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </DynamicBackground>
         </ThemeProvider>
       </body>
     </html>

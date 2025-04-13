@@ -36,6 +36,11 @@ module.exports = {
         success: "var(--success-color)",
         warning: "var(--warning-color)",
         error: "var(--error-color)",
+        glass: {
+          DEFAULT: "var(--glass-background)",
+          border: "var(--glass-border)",
+          shadow: "var(--glass-shadow)",
+        },
       },
       fontSize: {
         h1: "var(--h1-size)",
@@ -69,6 +74,7 @@ module.exports = {
         "float-slow": "float 6s ease-in-out infinite",
         "float-medium": "float 5s ease-in-out infinite 1s",
         "float-fast": "float 4s ease-in-out infinite 0.5s",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
       keyframes: {
         bounce: {
@@ -82,6 +88,16 @@ module.exports = {
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-15px)" },
+        },
+        pulse: {
+          "0%, 100%": {
+            opacity: "1",
+            boxShadow: "0 0 0 0 rgba(var(--accent-color-rgb), 0.4)",
+          },
+          "50%": {
+            opacity: "0.8",
+            boxShadow: "0 0 0 10px rgba(var(--accent-color-rgb), 0)",
+          },
         },
       },
       // Keep existing typography config if needed

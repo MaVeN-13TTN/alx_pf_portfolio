@@ -42,10 +42,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md animate-fade-in">
       <div
         ref={modalRef}
-        className="bg-card border border-border rounded-xl shadow-xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col"
+        className="glassmorphism rounded-xl shadow-xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col"
       >
         <div className="relative w-full h-72 sm:h-96">
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent z-10"></div>

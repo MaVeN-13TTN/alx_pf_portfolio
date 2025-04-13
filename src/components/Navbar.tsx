@@ -30,7 +30,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 w-full backdrop-blur-sm transition-all duration-300 ${isScrolled ? 'bg-background/90 shadow-md' : 'bg-background border-b border-border/50'}`}
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'glassmorphism shadow-md' : 'backdrop-blur-sm bg-background/80 border-b border-border/50'}`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -112,7 +112,7 @@ function Navbar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-card border-t border-border animate-fade-in">
+        <div className="md:hidden glassmorphism border-t border-glass-border animate-fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               href="/bio"

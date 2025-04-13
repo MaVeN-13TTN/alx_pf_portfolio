@@ -12,7 +12,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
   return (
     <div
-      className="bg-card border border-border rounded-xl shadow-sm overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-md group"
+      className="glassmorphism rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl hover:shadow-accent/20 border border-transparent hover:border-accent/30 group relative before:absolute before:-inset-1 before:rounded-[1rem] before:bg-accent/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300 before:-z-10"
       onClick={onClick}
     >
       <div className="relative w-full h-52 overflow-hidden">
@@ -50,8 +50,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
           </div>
         </div>
       </div>
-      <div className="p-6">
-        <h2 className="text-xl font-semibold mb-2 text-heading group-hover:text-accent transition-colors">
+      <div className="p-6 backdrop-blur-sm bg-opacity-40 bg-card/30">
+        <h2 className="text-xl font-semibold mb-2 text-heading group-hover:text-accent transition-all duration-300 group-hover:translate-x-0.5">
           {project.title}
         </h2>
         <p className="text-secondary mb-4 line-clamp-2">
@@ -61,7 +61,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
           {project.technologies.slice(0, 3).map((tech, index) => (
             <span
               key={index}
-              className="px-3 py-1 bg-accent/5 text-accent text-xs rounded-full font-medium"
+              className="px-3 py-1 bg-accent/5 text-accent text-xs rounded-full font-medium transition-all duration-300 group-hover:bg-accent/10 group-hover:shadow-sm"
             >
               {tech}
             </span>
