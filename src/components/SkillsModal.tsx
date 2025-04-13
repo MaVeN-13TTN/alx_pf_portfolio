@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { X, ChevronDown, ChevronUp } from 'lucide-react';
+import { detailedSkillCategories, DetailedSkillCategory } from '@/data/skills';
 
 export interface Skill {
   name: string;
@@ -27,6 +28,25 @@ interface SkillsModalProps {
 
 const SkillsModal: React.FC<SkillsModalProps> = ({ category, isOpen, onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [expandedSkills, setExpandedSkills] = useState<{[key: string]: boolean}>({});
+  const [detailedCategory, setDetailedCategory] = useState<DetailedSkillCategory | null>(null);
+
+  useEffect(() => {
+    if (category && isOpen) {
+      // Find the detailed category that matches the selected category
+      const detailed = detailedSkillCategories.find(cat => cat.id === category.id);
+      setDetailedCategory(detailed || null);
+
+      // Initialize all skills as collapsed
+      if (detailed) {
+        const initialExpandState = detailed.skills.reduce((acc, skill) => {
+          acc[skill.name] = false;
+          return acc;
+        }, {} as {[key: string]: boolean});
+        setExpandedSkills(initialExpandState);
+      }
+    }
+  }, [category, isOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -52,7 +72,14 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ category, isOpen, onClose }) 
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen || !category) return null;
+  const toggleSkill = (skillName: string) => {
+    setExpandedSkills(prev => ({
+      ...prev,
+      [skillName]: !prev[skillName]
+    }));
+  };
+
+  if (!isOpen || !category || !detailedCategory) return null;
 
   // Determine the color classes based on the category color
   const getColorClasses = () => {
@@ -90,23 +117,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ category, isOpen, onClose }) 
 
   const colors = getColorClasses();
 
-  // Function to render the skill level indicator
-  const renderSkillLevel = (level: Skill['level']) => {
-    const levels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
-    const index = levels.indexOf(level);
-
-    return (
-      <div className="flex items-center space-x-1 mt-1">
-        {levels.map((_, i) => (
-          <div
-            key={i}
-            className={`h-1.5 w-6 rounded-full ${i <= index ? colors.text : 'bg-gray-200 dark:bg-gray-700'}`}
-          />
-        ))}
-        <span className="ml-2 text-xs text-secondary">{level}</span>
-      </div>
-    );
-  };
+  // We're now using expandable sections instead of skill level indicators
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-md animate-fade-in">
@@ -136,21 +147,39 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ category, isOpen, onClose }) 
 
         {/* Skills list */}
         <div className="p-6 overflow-y-auto">
-          <h3 className="text-xl font-semibold mb-4 text-heading">Skills & Proficiency</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {category.skills.map((skill, index) => (
-              <div key={index} className="glassmorphism p-4 rounded-lg">
-                <div className="flex items-center justify-between mb-2">
+          <h3 className="text-xl font-semibold mb-4 text-heading">Detailed Skills</h3>
+          <p className="text-secondary mb-6">{detailedCategory.description}</p>
+
+          <div className="space-y-4">
+            {detailedCategory.skills.map((skill, index) => (
+              <div key={index} className="border border-border rounded-lg overflow-hidden">
+                <div
+                  className={`flex justify-between items-center p-4 ${colors.bg} cursor-pointer`}
+                  onClick={() => toggleSkill(skill.name)}
+                >
                   <h4 className="font-semibold text-heading flex items-center">
-                    {skill.icon && <span className="mr-2">{skill.icon}</span>}
                     {skill.name}
                   </h4>
-                  <span className={`px-2 py-1 text-xs rounded-full ${colors.pill}`}>
-                    {skill.level}
-                  </span>
+                  <button className={`p-1 hover:${colors.bg} rounded-full transition-colors`}>
+                    {expandedSkills[skill.name] ?
+                      <ChevronUp className="w-5 h-5 text-secondary" /> :
+                      <ChevronDown className="w-5 h-5 text-secondary" />}
+                  </button>
                 </div>
-                {renderSkillLevel(skill.level)}
-                <p className="mt-2 text-secondary text-sm">{skill.description}</p>
+
+                {expandedSkills[skill.name] && (
+                  <div className="p-4 bg-background">
+                    <p className="text-secondary mb-4">{skill.description}</p>
+                    <div className="space-y-2">
+                      <h5 className="font-medium text-heading">Key Skills:</h5>
+                      <ul className="list-disc pl-5 space-y-1">
+                        {skill.items.map((item, i) => (
+                          <li key={i} className="text-secondary">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>

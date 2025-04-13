@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaAws, FaDocker, FaJava, FaPython, FaJs } from 'react-icons/fa';
+import { SiTerraform, SiKubernetes, SiGnubash, SiWireshark, SiGithubactions, SiGo, SiAmazon } from 'react-icons/si';
+import { MdSecurity } from 'react-icons/md';
 import SkillsModal, { SkillCategory } from '@/components/SkillsModal';
 import { skillCategories } from '@/data/skills';
 
@@ -94,8 +96,8 @@ export default function Home() {
             Professional Expertise
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Cloud Engineering */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Cloud Computing */}
             <div
               className="glassmorphism p-6 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer"
               onClick={() => openSkillsModal('cloud')}
@@ -103,12 +105,18 @@ export default function Home() {
               <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                 <span className="text-2xl">☁️</span>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-heading">Cloud Engineering</h3>
-              <p className="text-secondary mb-4">Designing and implementing scalable, secure cloud infrastructure on AWS, Azure, and GCP platforms.</p>
+              <h3 className="text-xl font-semibold mb-3 text-heading">Cloud Computing</h3>
+              <p className="text-secondary mb-4">Designing and implementing scalable, secure cloud infrastructure with AWS services.</p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded">AWS</span>
-                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded">Azure</span>
-                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded">Terraform</span>
+                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded flex items-center">
+                  <FaAws className="mr-1" /> AWS
+                </span>
+                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded flex items-center">
+                  <SiTerraform className="mr-1" /> Terraform
+                </span>
+                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded flex items-center">
+                  <SiAmazon className="mr-1" /> CloudFormation
+                </span>
               </div>
               <div className="mt-4 flex items-center justify-center">
                 <button className="px-4 py-2 bg-accent/10 hover:bg-accent/20 text-accent rounded-md text-sm font-medium transition-all duration-300 flex items-center">
@@ -120,7 +128,7 @@ export default function Home() {
             {/* Cybersecurity */}
             <div
               className="glassmorphism p-6 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer"
-              onClick={() => openSkillsModal('security')}
+              onClick={() => openSkillsModal('cybersecurity')}
             >
               <div className="w-12 h-12 rounded-full bg-success/10 flex items-center justify-center mb-4">
                 <span className="text-2xl">🔒</span>
@@ -128,9 +136,15 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-3 text-heading">Cybersecurity</h3>
               <p className="text-secondary mb-4">Implementing robust security measures to protect systems and data from threats and vulnerabilities.</p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-success/5 text-success text-xs rounded">Threat Analysis</span>
-                <span className="px-2 py-1 bg-success/5 text-success text-xs rounded">Security Audits</span>
-                <span className="px-2 py-1 bg-success/5 text-success text-xs rounded">Compliance</span>
+                <span className="px-2 py-1 bg-success/5 text-success text-xs rounded flex items-center">
+                  <MdSecurity className="mr-1" /> Threat Analysis
+                </span>
+                <span className="px-2 py-1 bg-success/5 text-success text-xs rounded flex items-center">
+                  <MdSecurity className="mr-1" /> Security Audits
+                </span>
+                <span className="px-2 py-1 bg-success/5 text-success text-xs rounded flex items-center">
+                  <SiWireshark className="mr-1" /> CTF Tools
+                </span>
               </div>
               <div className="mt-4 flex items-center justify-center">
                 <button className="px-4 py-2 bg-success/10 hover:bg-success/20 text-success rounded-md text-sm font-medium transition-all duration-300 flex items-center">
@@ -147,15 +161,55 @@ export default function Home() {
               <div className="w-12 h-12 rounded-full bg-warning/10 flex items-center justify-center mb-4">
                 <span className="text-2xl">⚙️</span>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-heading">DevOps</h3>
+              <h3 className="text-xl font-semibold mb-3 text-heading">DevOps & Automation</h3>
               <p className="text-secondary mb-4">Streamlining development and operations with automated pipelines and infrastructure as code.</p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-warning/5 text-warning text-xs rounded">CI/CD</span>
-                <span className="px-2 py-1 bg-warning/5 text-warning text-xs rounded">Docker</span>
-                <span className="px-2 py-1 bg-warning/5 text-warning text-xs rounded">Kubernetes</span>
+                <span className="px-2 py-1 bg-warning/5 text-warning text-xs rounded flex items-center">
+                  <SiGithubactions className="mr-1" /> CI/CD
+                </span>
+                <span className="px-2 py-1 bg-warning/5 text-warning text-xs rounded flex items-center">
+                  <FaDocker className="mr-1" /> Docker
+                </span>
+                <span className="px-2 py-1 bg-warning/5 text-warning text-xs rounded flex items-center">
+                  <SiKubernetes className="mr-1" /> Kubernetes
+                </span>
               </div>
               <div className="mt-4 flex items-center justify-center">
                 <button className="px-4 py-2 bg-warning/10 hover:bg-warning/20 text-warning rounded-md text-sm font-medium transition-all duration-300 flex items-center">
+                  View Skills <ArrowRight className="ml-1 w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Programming Languages */}
+            <div
+              className="glassmorphism p-6 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+              onClick={() => openSkillsModal('programming')}
+            >
+              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                <span className="text-2xl">💻</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-heading">Programming Languages</h3>
+              <p className="text-secondary mb-4">Proficiency in various programming languages for different application domains.</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded flex items-center">
+                  <FaPython className="mr-1" /> Python
+                </span>
+                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded flex items-center">
+                  <FaJs className="mr-1" /> JavaScript
+                </span>
+                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded flex items-center">
+                  <FaJava className="mr-1" /> Java
+                </span>
+                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded flex items-center">
+                  <SiGo className="mr-1" /> Go
+                </span>
+                <span className="px-2 py-1 bg-accent/5 text-accent text-xs rounded flex items-center">
+                  <SiGnubash className="mr-1" /> Bash
+                </span>
+              </div>
+              <div className="mt-4 flex items-center justify-center">
+                <button className="px-4 py-2 bg-accent/10 hover:bg-accent/20 text-accent rounded-md text-sm font-medium transition-all duration-300 flex items-center">
                   View Skills <ArrowRight className="ml-1 w-4 h-4" />
                 </button>
               </div>
