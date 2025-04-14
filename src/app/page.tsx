@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { FaLinkedin, FaGithub, FaAws, FaDocker, FaJava, FaPython, FaJs } from 'react-icons/fa';
 import { SiTerraform, SiKubernetes, SiGnubash, SiWireshark, SiGithubactions, SiGo, SiAmazon } from 'react-icons/si';
@@ -27,59 +28,81 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Full viewport height */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col justify-center items-center px-4 overflow-hidden">
 
         {/* Main content */}
-        <div className="relative z-10 max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl mb-6 text-heading font-bold tracking-tight">
-            Ndung&apos;u Kinyanjui
-          </h1>
+        <div className="relative z-10 max-w-6xl w-full mx-auto animate-fade-in">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            {/* Text content */}
+            <div className="md:w-3/5 text-center md:text-left">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl mb-6 text-heading font-bold tracking-tight">
+                Ndung&apos;u Kinyanjui
+              </h1>
 
-          <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 mb-8">
-            <span className="px-4 py-2 rounded-full bg-accent/10 dark:bg-accent/20 text-accent font-medium text-sm md:text-base">
-              Cloud Engineer
-            </span>
-            <span className="px-4 py-2 rounded-full bg-success/10 dark:bg-success/20 text-success font-medium text-sm md:text-base">
-              Cybersecurity Analyst
-            </span>
-            <span className="px-4 py-2 rounded-full bg-warning/10 dark:bg-warning/20 text-warning font-medium text-sm md:text-base">
-              DevOps Enthusiast
-            </span>
-          </div>
+              <div className="flex flex-wrap md:justify-start justify-center gap-x-3 gap-y-2 mb-8">
+                <span className="px-4 py-2 rounded-full bg-accent/10 dark:bg-accent/20 text-accent font-medium text-sm md:text-base">
+                  Cloud Engineer
+                </span>
+                <span className="px-4 py-2 rounded-full bg-success/10 dark:bg-success/20 text-success font-medium text-sm md:text-base">
+                  Cybersecurity Analyst
+                </span>
+                <span className="px-4 py-2 rounded-full bg-warning/10 dark:bg-warning/20 text-warning font-medium text-sm md:text-base">
+                  DevOps Enthusiast
+                </span>
+              </div>
 
-          <div className="max-w-2xl mx-auto mb-10 text-body text-base md:text-lg space-y-4">
-            <p className="text-xl md:text-2xl font-medium text-heading">
-              Welcome to my digital space — where passion meets purpose.
-            </p>
-            <p>
-              I&apos;m a tech professional focused on building secure, scalable systems that power meaningful digital experiences. My mission is to engineer solutions that make a difference, while continuously learning and leading in the cloud and cybersecurity space.
-            </p>
-          </div>
+              <div className="mb-10 text-body text-base md:text-lg space-y-4">
+                <p className="text-xl md:text-2xl font-medium text-heading">
+                  Welcome to my digital space — where passion meets purpose.
+                </p>
+                <p>
+                  I&apos;m a tech professional focused on building secure, scalable systems that power meaningful digital experiences. My mission is to engineer solutions that make a difference, while continuously learning and leading in the cloud and cybersecurity space.
+                </p>
+              </div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <Link
-              href="/portfolio"
-              className="px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-all duration-300 font-medium flex items-center justify-center group"
-            >
-              View My Work <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/bio"
-              className="px-6 py-3 bg-background border border-border text-heading rounded-lg hover:bg-accent/5 transition-all duration-300 font-medium"
-            >
-              About Me
-            </Link>
-          </div>
+              <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mb-12">
+                <Link
+                  href="/portfolio"
+                  className="px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-hover transition-all duration-300 font-medium flex items-center justify-center group"
+                >
+                  View My Work <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  href="/bio"
+                  className="px-6 py-3 bg-background border border-border text-heading rounded-lg hover:bg-accent/5 transition-all duration-300 font-medium"
+                >
+                  About Me
+                </Link>
+              </div>
 
-          <div className="flex justify-center space-x-4">
-            <a href="https://github.com/MaVeN-13TTN" target="_blank" rel="noopener noreferrer"
-               className="p-2 text-secondary hover:text-heading transition-colors">
-              <FaGithub className="w-6 h-6" />
-            </a>
-            <a href="https://www.linkedin.com/in/ndungu-kinyanjui/" target="_blank" rel="noopener noreferrer"
-               className="p-2 text-secondary hover:text-heading transition-colors">
-              <FaLinkedin className="w-6 h-6" />
-            </a>
+              <div className="flex justify-center md:justify-start space-x-4">
+                <a href="https://github.com/MaVeN-13TTN" target="_blank" rel="noopener noreferrer"
+                  className="p-2 text-secondary hover:text-heading transition-colors">
+                  <FaGithub className="w-6 h-6" />
+                </a>
+                <a href="https://www.linkedin.com/in/ndungu-kinyanjui/" target="_blank" rel="noopener noreferrer"
+                  className="p-2 text-secondary hover:text-heading transition-colors">
+                  <FaLinkedin className="w-6 h-6" />
+                </a>
+              </div>
+            </div>
+
+            {/* Profile Image */}
+            <div className="md:w-2/5 flex justify-center md:justify-end">
+              <div className="relative group">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent to-success opacity-0 group-hover:opacity-70 blur-lg transition-opacity duration-300 ease-in-out"></div>
+                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-background shadow-xl">
+                  <Image
+                    src="/images/ndungu-kinyanjui.png"
+                    alt="Ndung'u Kinyanjui"
+                    fill
+                    sizes="(max-width: 768px) 16rem, 20rem"
+                    priority
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
